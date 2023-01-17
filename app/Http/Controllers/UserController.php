@@ -22,7 +22,6 @@ class UserController extends Controller
     public function find(Route $route)
     {
         $this->user = User::find($route->getParameter('user'));
-        $this->notFound($this->user);
     }
     /**
      * Display a listing of the resource.

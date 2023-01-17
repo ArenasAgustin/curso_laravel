@@ -17,7 +17,7 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
-                        {!! link_to_route('user.edit', $title = 'Edit', $parameters = $user->id, $attributes = ['class'=>'btn btn-primary']) !!}
+                        {!! link_to_route('user.edit', $title = 'Edit', $parameters = $user, $attributes = ['class'=>'btn btn-primary']) !!}
                     </td>
                 </tr>
             @endforeach

@@ -1,15 +1,8 @@
 @extends('layouts.admin')
 
-@if (Session::has('message'))
-    <div class="alert alert-success alert-dismissible show" role="alert">
-        {{Session::get('message')}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-@endif
-
 @section('content')
+    @include('alerts.success')
+
     <table class="table">
         <thead>
             <tr>

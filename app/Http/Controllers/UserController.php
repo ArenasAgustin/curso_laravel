@@ -10,9 +10,20 @@ use Cinema\Http\Controllers\Controller;
 use Cinema\User;
 use Session;
 use Redirect;
+use Illuminate\Routing\Route;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->beforeFilter('@find', ['only' => ['edit', 'update', 'destroy']]);
+    }
+
+    public function find(Route $route)
+    {
+        $this->user = User::find($route->getParameter('user'));
+        $this->notFound($this->user);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -42,11 +53,7 @@ class UserController extends Controller
      */
     public function store(UserCreateRequest $request)
     {
-        User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => $request['password'],
-        ]);
+        User::create($request->all());
 
         Session::flash('message', 'User created successfully');
         return Redirect::to('/user');
@@ -71,9 +78,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-
-        return view('user.edit', ['user' => $user]);
+        return view('user.edit', ['user' => $this->user]);
     }
 
     /**
@@ -85,9 +90,8 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request, $id)
     {
-        $user = User::find($id);
-        $user->fill($request->all());
-        $user->save();
+        $this->user->fill($request->all());
+        $this->user->save();
 
         Session::flash('message', 'User modified successfully');
         return Redirect::to('/user');
@@ -101,7 +105,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);
+        $this->user->delete();
 
         Session::flash('message', 'User deleted successfully');
         return Redirect::to('/user');

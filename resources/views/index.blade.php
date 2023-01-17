@@ -1,6 +1,6 @@
 @extends('layouts.principal')
 @section('content')
-    @include('alerts.errorLogin')
+    @include('alerts.error')
     @include('alerts.success')
     <div class="header">
         <div class="top-header">

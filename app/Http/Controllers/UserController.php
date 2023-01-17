@@ -14,8 +14,15 @@ use Illuminate\Routing\Route;
 
 class UserController extends Controller
 {
+    /**
+     * Constructor.
+     *
+     * @return void
+     */
     public function __construct()
     {
+        $this->middleware('auth');
+        $this->middleware('admin');
         $this->beforeFilter('@find', ['only' => ['edit', 'update', 'destroy']]);
     }
 

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    @include('alerts.error')
+    @include('alerts.errors')
 
     {!! Form::open(['route' => 'user.store', 'method' => 'POST']) !!}
     @include('user.forms.userForm')

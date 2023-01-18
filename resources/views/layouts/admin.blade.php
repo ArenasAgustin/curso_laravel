@@ -80,7 +80,7 @@
                             <a href="#"><i class="fa fa-child fa-fw"></i> Genre<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#"><i class='fa fa-plus fa-fw'></i> Add</a>
+                                    <a href="/genre/create"><i class='fa fa-plus fa-fw'></i> Add</a>
                                 </li>
                                 <li>
                                     <a href="#"><i class='fa fa-list-ol fa-fw'></i> Genres</a>
@@ -104,6 +104,7 @@
     {!! Html::script('js/bootstrap.min.js') !!}
     {!! Html::script('js/metisMenu.min.js') !!}
     {!! Html::script('js/sb-admin-2.js') !!}
+    {!! Html::script('js/script.js') !!}
 
 </body>
 

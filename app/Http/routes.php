@@ -33,6 +33,7 @@ Route::get('admin', 'FrontController@admin');
 Route::resource('movie', 'MovieController');
 Route::resource('user', 'UserController');
 Route::resource('login', 'LoginController');
+Route::resource('genre', 'GenreController');
 
 /////////////////////////////////// Logout
 Route::get('logout','LoginController@logout');

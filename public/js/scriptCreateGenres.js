@@ -1,7 +1,7 @@
 $("#register").click(function () {
-  var data = $("#genre").val();
-  var route = "/genre";
-  var token = $("#token").val();
+  let data = $("#genre").val();
+  let route = "/genre";
+  let token = $("#token").val();
 
   $.ajax({
     url: route,

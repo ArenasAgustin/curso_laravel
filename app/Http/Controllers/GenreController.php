@@ -17,7 +17,7 @@ class GenreController extends Controller
      */
     public function index()
     {
-        //
+        return view('genre.index');
     }
 
     /**
@@ -89,5 +89,12 @@ class GenreController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function listing()
+    {
+        $genres = Genre::all();
+
+        return response()->json($genres->toArray());
     }
 }

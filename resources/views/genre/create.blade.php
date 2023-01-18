@@ -10,4 +10,8 @@
     @include('genre.form.genre')
     {!!link_to('#', $title='Register', $attributes = ['id'=>'register', 'class'=>'btn btn-primary'], $secure = null)!!}
     {!!Form::close()!!}
+@endsection 
+
+@section('scripts')
+    {!! Html::script('js/scriptCreateGenres.js') !!}
 @endsection

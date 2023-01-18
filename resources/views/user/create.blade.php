@@ -4,7 +4,7 @@
     @include('alerts.errors')
 
     {!! Form::open(['route' => 'user.store', 'method' => 'POST']) !!}
-    @include('user.forms.userForm')
+    @include('forms.userForm')
 
     <div class="form-group">
         {!! Form::submit('Create User', ['class' => 'btn btn-primary']) !!}

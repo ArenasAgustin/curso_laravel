@@ -37,7 +37,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(2);
+        $users = User::paginate(8);
         return view('user.index', compact('users'));
     }
 
@@ -82,7 +82,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
         return view('user.edit', ['user' => $this->user]);
     }
@@ -94,7 +94,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserUpdateRequest $request, $id)
+    public function update(UserUpdateRequest $request)
     {
         $this->user->fill($request->all());
         $this->user->save();
@@ -109,7 +109,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
         $this->user->delete();
 

@@ -4,7 +4,7 @@
     @include('alerts.errors')
 
     {!! Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'PUT']) !!}
-    @include('user.forms.userForm')
+    @include('forms.userForm')
     <div class="form-group">
         {!! Form::submit('Update User', ['class' => 'btn btn-primary']) !!}
     </div>

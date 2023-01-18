@@ -7,16 +7,36 @@ use Illuminate\Http\Request;
 use Cinema\Http\Requests;
 use Cinema\Http\Controllers\Controller;
 use Cinema\Genre;
+use Illuminate\Routing\Route;
 
 class GenreController extends Controller
 {
+    /**
+     * Constructor.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->beforeFilter('@find', ['only' => ['edit', 'update', 'destroy']]);
+    }
+
+    public function find(Route $route)
+    {
+        $this->user = Genre::find($route->getParameter('genre'));
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->ajax()) {
+            $genres = Genre::all();
+            return response()->json($genres);
+        }
         return view('genre.index');
     }
 
@@ -38,7 +58,7 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->ajax()){
+        if ($request->ajax()) {
             Genre::create($request->all());
             return response()->json([
                 "mensaje" => "Created"
@@ -65,7 +85,7 @@ class GenreController extends Controller
      */
     public function edit($id)
     {
-        //
+        return response()->json($this->user);
     }
 
     /**
@@ -77,7 +97,9 @@ class GenreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->user->fill($request->all());
+        $this->user->save();
+        return response()->json(["mensaje" => "Ready"]);
     }
 
     /**
@@ -89,12 +111,5 @@ class GenreController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function listing()
-    {
-        $genres = Genre::all();
-
-        return response()->json($genres->toArray());
     }
 }

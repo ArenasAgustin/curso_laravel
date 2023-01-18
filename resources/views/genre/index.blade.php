@@ -1,7 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-    <table>
+    @include('modal.genreModal')
+
+    <table class="table">
         <thead>
             <tr>
                 <th>Name</th>
@@ -10,7 +12,6 @@
         </thead>
 
         <tbody id='data'>
-
         </tbody>
     </table>
 @endsection

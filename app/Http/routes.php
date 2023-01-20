@@ -30,7 +30,7 @@ Route::get('reviews', 'FrontController@reviews');
 Route::get('admin', 'FrontController@admin');
 
 /////////////////////////////////// Controllers
-Route::resource('movie', 'MovieController');
+Route::resource('movies', 'MovieController');
 Route::resource('user', 'UserController');
 Route::resource('login', 'LoginController');
 Route::get('logout','LoginController@logout');

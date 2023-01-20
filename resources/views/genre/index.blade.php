@@ -2,6 +2,7 @@
 
 @section('content')
     @include('modal.genreModal')
+    @include('alerts.genreSuccess')
 
     <table class="table">
         <thead>

@@ -25,6 +25,22 @@ function ShowModal(btn) {
   });
 }
 
+function Delete(btn){
+  let route = `http://localhost:8000/genre/${btn.value}`;
+  let token = $("#token").val();
+
+  $.ajax({
+    url: route,
+    headers: { "X-CSRF-TOKEN": token },
+    type: "DELETE",
+    dataType: "json",
+    success: function () {
+      Loading();
+      $("#msj-success").fadeIn();
+    },
+  });
+}
+
 $("#update").click(function () {
   let value = $("#id").val();
   let data = $("#genre").val();
@@ -38,7 +54,7 @@ $("#update").click(function () {
     dataType: "json",
     data: { genre: data },
     success: function () {
-      Carga();
+      Loading();
       $("#modalGenre").modal("toggle");
       $("#msj-success").fadeIn();
     },

@@ -13,9 +13,5 @@ $("#register").click(function () {
     success: function () {
       $("#msj-success").fadeIn();
     },
-    error: function (msj) {
-      $("#msj").html(msj.responseJSON.genre);
-      $("#msj-error").fadeIn();
-    },
   });
 });

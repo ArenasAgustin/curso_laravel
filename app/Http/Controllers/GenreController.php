@@ -18,6 +18,7 @@ class GenreController extends Controller
      */
     public function __construct()
     {
+        $this->middleware('auth');
         $this->beforeFilter('@find', ['only' => ['edit', 'update', 'destroy']]);
     }
 
@@ -110,6 +111,7 @@ class GenreController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->user->delete();
+        return response()->json(["mensaje" => "Deleted"]);
     }
 }

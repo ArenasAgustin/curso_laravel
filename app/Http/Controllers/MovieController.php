@@ -11,6 +11,7 @@ use Cinema\Movie;
 use Session;
 use Redirect;
 use Illuminate\Routing\Route;
+use spec\PhpSpec\Formatter\Presenter\Value\WithMethod;
 
 class MovieController extends Controller
 {
@@ -27,7 +28,7 @@ class MovieController extends Controller
 
     public function find(Route $route)
     {
-        $this->movie = Movie::find($route->getParameter('movie'));
+        $this->movie = Movie::find($route->getParameter('movies'));
     }
 
     /**
@@ -63,7 +64,11 @@ class MovieController extends Controller
     public function store(Request $request)
     {
         $movie = Movie::create($request->all());
-        $movie->genre()->sync($request->get('genres'));
+
+        if ($request->get('genres')) {
+            $movie->genre()->sync($request->get('genres'));
+        }
+
         $movie->save();
 
         Session::flash('message', 'Movie created successfully');
@@ -89,7 +94,10 @@ class MovieController extends Controller
      */
     public function edit($id)
     {
-        return view('movies.edit', ['movie' => $this->movie]);
+        $genres = Genre::all();
+        $genres = $genres->lists('genre', 'id');
+
+        return view('movies.edit', ['movie' => $this->movie, 'genres' => $genres]);
     }
 
     /**
@@ -102,6 +110,11 @@ class MovieController extends Controller
     public function update(Request $request, $id)
     {
         $this->movie->fill($request->all());
+
+        if ($request->get('genres')) {
+            $this->movie->genre()->sync($request->get('genres'));
+        }
+
         $this->movie->save();
 
         Session::flash('message', 'Movie modified successfully');

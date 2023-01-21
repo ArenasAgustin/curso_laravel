@@ -20,7 +20,7 @@
 
 <div class="form-group">
     {!! Form::label('Genres:') !!}
-    {!! Form::select('genres[]', $genres, null, [
+    {!! Form::select('genres[]', $genres, $movie->getGenreListAttribute(true), [
         'class' => 'form-control',
         'size' => '3',
         'aria-label' => 'size 3 select genres',

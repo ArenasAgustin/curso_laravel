@@ -5,6 +5,7 @@ namespace Cinema\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Cinema\Http\Requests;
+use Cinema\Http\Requests\GenreRequest;
 use Cinema\Http\Controllers\Controller;
 use Cinema\Genre;
 use Illuminate\Routing\Route;
@@ -57,7 +58,7 @@ class GenreController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GenreRequest $request)
     {
         if ($request->ajax()) {
             Genre::create($request->all());

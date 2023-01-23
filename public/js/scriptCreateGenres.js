@@ -11,7 +11,14 @@ $("#register").click(function () {
     data: { genre: data },
 
     success: function () {
-      $("#msj-success").fadeIn();
+      $("#msg-success").fadeIn();
+    },
+
+    error: function (msg) {
+      $("#msg-txt").html(msg.responseJSON.genre);
+      console.log(msg.responseJSON.genre);
+      console.log($("#msg-txt"));
+      $("#msg-error").fadeIn();
     },
   });
 });

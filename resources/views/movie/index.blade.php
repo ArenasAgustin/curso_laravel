@@ -35,9 +35,11 @@
                                 <span>{{ $genre }}</span>
                             @endforeach
                         </td>
-                        <td>{{ $movie->image }}</td>
                         <td>
-                            {!! link_to_route('movies.edit', $title = 'Edit', $parameters = $movie, $attributes = ['class' => 'btn btn-primary']) !!}
+                            <img src='movies/{{ $movie->image }}' alt='{{ $movie->name }}' style='width:100px' />
+                        </td>
+                        <td>
+                            {!! link_to_route('movie.edit', $title = 'Edit', $parameters = $movie, $attributes = ['class' => 'btn btn-primary']) !!}
                         </td>
                     </tr>
                 @endforeach

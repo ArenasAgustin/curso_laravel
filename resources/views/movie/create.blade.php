@@ -3,7 +3,7 @@
 @section('content')
     @include('alerts.errors')
 
-    {!! Form::open(['route' => 'movies.store', 'method' => 'POST']) !!}
+    {!! Form::open(['route' => 'movie.store', 'method' => 'POST', 'files' => true]) !!}
     @include('forms.movieForm')
 
     <div class="form-group">

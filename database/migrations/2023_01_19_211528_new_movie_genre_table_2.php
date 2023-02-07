@@ -16,7 +16,7 @@ class NewMovieGenreTable2 extends Migration
             $table->increments('id');
             $table->integer('genre_id')->unsigned();
             $table->integer('movie_id')->unsigned();
-            
+
             $table->foreign('genre_id')->references('id')->on('genres');
             $table->foreign('movie_id')->references('id')->on('movies');
         });

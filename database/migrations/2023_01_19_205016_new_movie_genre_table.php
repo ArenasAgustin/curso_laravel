@@ -12,7 +12,7 @@ class NewMovieGenreTable extends Migration
      */
     public function up()
     {
-       /*  Schema::create('movie_genres', function (Blueprint $table) {
+        /* Schema::create('movie_genres', function (Blueprint $table) {
             $table->increments('id');
             $table->foreign('genre_id')->references('id')->on('genres');
             $table->foreign('movie_id')->references('id')->on('movies');

@@ -2,18 +2,17 @@
 
 namespace Cinema\Http\Controllers;
 
-use Cinema\Genre;
 use Illuminate\Http\Request;
 
 use Cinema\Http\Requests;
 use Cinema\Http\Controllers\Controller;
+use Cinema\Genre;
 use Cinema\Movie;
 use Session;
 use Redirect;
 use Illuminate\Routing\Route;
-use spec\PhpSpec\Formatter\Presenter\Value\WithMethod;
 
-class MovieController extends Controller
+class MoviesController extends Controller
 {
     /**
      * Constructor.
@@ -39,7 +38,7 @@ class MovieController extends Controller
     public function index()
     {
         $movies = Movie::paginate(4);
-        return view('movies.index', compact('movies'));
+        return view('movie.index', compact('movies'));
     }
 
     /**
@@ -52,7 +51,7 @@ class MovieController extends Controller
         $genres = Genre::all();
         $genres = $genres->lists('genre', 'id');
 
-        return view('movies.create', compact('genres'));
+        return view('movie.create', compact('genres'));
     }
 
     /**
@@ -72,7 +71,8 @@ class MovieController extends Controller
         $movie->save();
 
         Session::flash('message', 'Movie created successfully');
-        return Redirect::to('/movies');
+
+        return Redirect::to('/movie');
     }
 
     /**
@@ -97,7 +97,7 @@ class MovieController extends Controller
         $genres = Genre::all();
         $genres = $genres->lists('genre', 'id');
 
-        return view('movies.edit', ['movie' => $this->movie, 'genres' => $genres]);
+        return view('movie.edit', ['movie' => $this->movie, 'genres' => $genres]);
     }
 
     /**
@@ -118,7 +118,7 @@ class MovieController extends Controller
         $this->movie->save();
 
         Session::flash('message', 'Movie modified successfully');
-        return Redirect::to('/movies');
+        return Redirect::to('/movie');
     }
 
     /**
@@ -132,6 +132,6 @@ class MovieController extends Controller
         $this->movie->delete();
 
         Session::flash('message', 'Movie deleted successfully');
-        return Redirect::to('/movies');
+        return Redirect::to('/movie');
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Cinema\Http\Requests;
 use Cinema\Http\Controllers\Controller;
+use Cinema\Movie;
 
 class FrontController extends Controller
 {
@@ -36,6 +37,7 @@ class FrontController extends Controller
 
     public function reviews()
     {
+        $movies = Movie::paginate(4);
         return view('reviews');
     }
 

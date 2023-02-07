@@ -3,7 +3,7 @@
 @section('content')
     @include('alerts.success')
 
-    <table class="table">
+    <table class="table table-dark table-striped table-dark table-hover">
         <thead>
             <tr>
                 <th>Name</th>

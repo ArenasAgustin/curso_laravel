@@ -27,7 +27,7 @@ class MoviesController extends Controller
 
     public function find(Route $route)
     {
-        $this->movie = Movie::find($route->getParameter('movies'));
+        $this->movie = Movie::find($route->getParameter('movie'));
     }
 
     /**
@@ -130,6 +130,7 @@ class MoviesController extends Controller
     public function destroy($id)
     {
         $this->movie->delete();
+        \Storage::delete($this->movie->image);
 
         Session::flash('message', 'Movie deleted successfully');
         return Redirect::to('/movie');

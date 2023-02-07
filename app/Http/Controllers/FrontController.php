@@ -27,7 +27,8 @@ class FrontController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $movies = Movie::all();
+        return view('index', compact('movies'));
     }
 
     public function contact()

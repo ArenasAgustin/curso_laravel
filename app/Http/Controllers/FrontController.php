@@ -38,7 +38,7 @@ class FrontController extends Controller
     public function reviews()
     {
         $movies = Movie::paginate(4);
-        return view('reviews');
+        return view('reviews', compact('movies'));
     }
 
     public function admin()

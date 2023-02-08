@@ -35,3 +35,4 @@ Route::resource('login', 'LoginController');
 Route::get('logout','LoginController@logout');
 Route::resource('genre', 'GenreController');
 Route::resource('movie', 'MoviesController');
+Route::resource('mail', 'MailController');

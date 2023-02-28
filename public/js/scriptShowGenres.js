@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 function Loading() {
   var tablaDatos = $("#data");
-  var route = "http://localhost:8000/genre";
+  var route = "/genre";
 
   $("#data").empty();
   $.get(route, function (res) {
@@ -17,7 +17,7 @@ function Loading() {
 }
 
 function ShowModal(btn) {
-  let route = `http://localhost:8000/genre/${btn.value}/edit`;
+  let route = `/genre/${btn.value}/edit`;
 
   $.get(route, function (res) {
     $("#genre").val(res.genre);
@@ -26,7 +26,7 @@ function ShowModal(btn) {
 }
 
 function Delete(btn){
-  let route = `http://localhost:8000/genre/${btn.value}`;
+  let route = `/genre/${btn.value}`;
   let token = $("#token").val();
 
   $.ajax({
@@ -44,7 +44,7 @@ function Delete(btn){
 $("#update").click(function () {
   let value = $("#id").val();
   let data = $("#genre").val();
-  let route = `http://localhost:8000/genre/${value}`;
+  let route = `/genre/${value}`;
   let token = $("#token").val();
 
   $.ajax({

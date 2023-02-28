@@ -25,22 +25,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- header-section-starts -->
     <div class="full">
         <div class="menu">
+            <?php
+            $homeClass = (isset($pageActive) and $pageActive == 'home') ? 'active' : 'disabled';
+            $reviewsClass = (isset($pageActive) and $pageActive == 'reviews') ? 'active' : 'disabled';
+            $contactClass = (isset($pageActive) and $pageActive == 'contact') ? 'active' : 'disabled';
+            
+            if ($reviewsClass == 'disabled' and $contactClass == 'disabled'):
+                $homeClass = 'active';
+            endif;
+            ?>
+
             <ul>
-                <li><a class="active" href="/"><i class="home"></i></a></li>
-                <li><a href="reviews">
+                <li>
+                    <a class={{ $homeClass }} href="/">
+                        <div class="hm"><i class="home1"></i><i class="home2"></i></div>
+                    </a>
+                </li>
+                <li>
+                    <a class={{ $reviewsClass }} href="reviews">
                         <div class="cat"><i class="watching"></i><i class="watching1"></i></div>
-                    </a></li>
-                <li><a href="contact">
+                    </a>
+                </li>
+                <li>
+                    <a class={{ $contactClass }} href="contact">
                         <div class="cnt"><i class="contact"></i><i class="contact1"></i></div>
-                    </a></li>
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="main">
-
             @yield('content')
-
-
-
             <div class="footer">
                 <h6>Disclaimer : </h6>
                 <p class="claim">This is a freebies and not an official website, I have no intention of disclose any

@@ -1,3 +1,5 @@
+<?php $pageActive = 'reviews' ?>
+
 @extends('layouts.principal')
 @section('content')
     <div class="review-content">

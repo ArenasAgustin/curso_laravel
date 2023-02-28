@@ -1,3 +1,5 @@
+<?php $pageActive = 'contact' ?>
+
 @extends('layouts.principal')
 @section('content')
     <div class="contact-content">
@@ -34,4 +36,5 @@
                 {!! Form::close() !!}
             </div>
         </div>
-    @endsection
+    </div>
+@endsection
